@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/static/data.js"></script>
+    <script src="/static/functionality.js"></script>
+    <title>Witter</title>
+    <link rel="icon" href="static/images/witter.png" />
+</head>
+<body onload="checkLogin()">
+    <!-- COLORS: https://www.canva.com/colors/color-palettes/blistering-cold/ 
+                 https://coolors.co/052f5f-005377-06a77d-d5c67a-f1a208
+    -->
+    <header>
+        <!-- Logo on the left side of the navigation bar -->
+        <div id="logo-frame">
+            <img id="logo-img" src="static/images/witter.png" />
+            <h1 id="site-name">Witter.com</h1>
+        </div>
+            <!-- Search-bar in the middle of the navigation bar-->
+        <div id="search-frame" class="dropdown-container">
+            <div id="search-bar" class="dropdown-button">
+                <i class="fa fa-search"></i>
+                <input id="search-input" type="text" name="username" onblur="this.value = ''" onmouseover="enableSearch();" onkeyup="searchUser(this.value);" placeholder="Search..." disabled />
+                <div id="search" class="dropdown">
+                </div>
+            </div>
+            
+        </div>
+    
+            <!-- Function buttons on the right side of the navigation bar -->
+        <div id="function-buttons">
+            <ul>
+                <li id="friends-frame" class="dropdown-container">
+                    <button id="friends-button" class="dropdown-button"><i class="fa fa-address-book fa-2x"></i></button>
+                    <div id="friend-requests">
+                        <div id="fr" class="dropdown">
+                        </div>
+                    </div>
+                </li>
+                <li id="settings-frame" class="dropdown-container">
+                    <button id="settings-button" class="dropdown-button"><i class="fa fa-gear fa-2x"></i></button>
+                    <div class="dropdown">
+                        <div onclick="setColor();">Swap theme</div>
+                        <div onclick="editUser('username');">Change username</div>
+                        <div onclick="editUser('password');">Change password</div>
+                        <div onclick="editUser('email');">Change email</div>
+                        <div class="danger" onclick="deleteAccount();">Delete account</div>
+                    </div>
+                </li>
+                <li id="logout-frame" class="dropdown-container">
+                    <button id="logout-button" class="dropdown-button" onclick="logout();"><i class="fa fa-sign-out  fa-2x"></i></button>
+                    <div class="dropdown">
+                        <div onclick="logout();">Logout</div>
+                    </div>
+                </li>
+            </ul>
+        <div>
+    </header>
+ 
+
+    <main>
+        <div id="login">
+            <div id="login-window"> 
+                <h2>Login:</h2>
+                <form action="javascript:void(0);" onsubmit="loginfunc();" id="loginform">
+                    <fieldset>
+                        <label for="username">Username: </label>
+                        <input id="login-username" name="username" type="text" placeholder="Type a username..." required />
+
+                        <label for="password">Password: </label>
+                        <input id="login-password" name="password" type="password" placeholder="Type a password..." required />
+
+                        <input type="submit" name="login" value="Login" />
+                    </fieldset>
+                </form>
+            </div>
+
+            <div id="register-window">
+                <h2>Register:</h2>
+                <form action="javascript:void(0);" onsubmit="registerfunc();" id="registerform">
+                    <fieldset>
+                        <label for="username">Username: </label>
+                        <input id="register-username" name="username" type="text" placeholder="Type a username..." required />
+
+                        <label for="password">Password: </label>
+                        <input id="register-password" name="password" type="password" placeholder="Type a password..." required />
+
+                        <label for="password2">Password Confirm: </label>
+                        <input id="register-password2" name="password2" type="password" placeholder="Confirm the password..." required />
+
+                        <label for="email">Email: </label>
+                        <input id="register-email" name="email" type="email" placeholder="Type an email..." required />
+
+                        <input type="submit" name="register" value="Register" />
+                    </fieldset>
+                </form>
+            </div>
+            
+
+            <div id="login-swap">
+                <h4>Already have a user:</h4>
+                <button onclick="loginSwap();">Login</button>
+            </div>
+            
+            <div id="register-swap">
+                <h4>Do not have a user:</h4>
+                <button onclick="registerSwap();" style="width: 70px;">Register</button>
+            </div>
+
+        </div>
+        <div id="app">
+            <aside>
+                <div id="loggedin">
+                </div>
+                <table>
+                    <thead>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Remove</th>
+                    </thead>
+                    <tbody id="friendlist">
+
+                    </tbody>
+                    
+                </table>
+            </aside>
+
+            <div id=post-frame>
+                <div id="edit-user-info" style="display: none;">
+                </div>
+                <div id="post-top">
+                    <button id="post-button" onclick="writePost()"><i class="fa fa-plus fa-2x"></i></button>
+                    <select id="select-sort" onchange="displayPosts();">
+                        <option value="post-sort-desc" selected>Newest-first</option>
+                        <option value="post-sort-asc">Newest-last</option>
+                    </select>
+                    <select id="select-show" onchange="displayPosts();">
+                        <option value="post-show-all" default>All</option>
+                        <option value="post-show-public">Public</i></option>
+                        <option value="post-show-friend">Friends</option>
+                    </select>
+                </div>
+                <div id="post-show">
+                    <form action="javascript:void(0);" id="post-form">
+                        <div id="post-form-right">
+                            <button action="" id="post-send" onclick="addAPost();">Post</button>
+                            <select id="select-view">
+                                <option value="public" selected>Public</option>
+                                <option value="friends">Friends</option>
+                            </select>
+                            <button id="post-cancel" onclick="cancelPost()"><i class="fa fa-close"></i></button>
+                        </div>
+                        <textarea id="post-content" name="post-content" placeholder="..." required></textarea>
+                    </form>
+                </div>
+                <div id="posts-board">
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+
+    <footer>
+        <p>Contact: 
+            <br>
+            999-012-345-678 
+            <br> 
+            <a href="mailto:admin@nomail.com">admin@nomail.com</a></p>
+    </footer>
+    
+</body>
+</html>

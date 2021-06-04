@@ -1,0 +1,313 @@
+/*
+########################
+        General
+########################
+*/
+
+html, body {
+    height: 100%;
+    min-width: 800px;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    background-color: #ECE9E0;
+    margin:0;
+    background-image: linear-gradient(to bottom right, #5D5F60, #8A9EA1);
+}
+a {
+    text-decoration: none;
+    color: #213130;
+}
+h1, h2, h3 {
+    color: #213130;
+}
+
+* {
+    color: #213130;
+    border-color: #213130;
+}
+
+p {
+    color: #ECE9E0;
+}
+
+button {
+    border-radius: 20px;
+    height: 40px;
+    width: 60px;
+    background-color: #ECE9E0;
+}
+
+.danger {
+    color: red;
+}
+
+#site-name {
+    display: inline-block;
+    color: #C4DBE0;
+}
+
+.frb {
+    height: 30px;
+    width: 40px;
+    margin-left: 5px;
+}
+
+/*
+########################
+        Header
+########################
+*/
+
+header {
+    background-color: #213130;
+    border-radius: 10px;
+    position: relative;
+}
+
+#logo-frame {
+    position: absolute;
+    float: left;
+    color: red;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+#logo-img {
+    width: 40px;
+    border: 1px solid #5D5F60;
+    border-radius: 5px;
+}
+
+#search-frame {
+    position: absolute;
+    padding-left: 40%;
+    padding-top: 15px;
+    
+}
+
+#search-bar input{
+    height: 2.5em;
+    border-radius: 20px;
+    text-indent: 10px;
+    font-size: 13.6px;
+}
+
+#function-buttons {
+    visibility: hidden;
+}
+
+#function-buttons ul {
+    float:right;
+    padding-right: 20px;
+}
+
+#function-buttons ul li {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.usersearch {
+    width: 190px;
+    padding-left: 20px;
+}
+
+.loggedin {
+    display: none;
+}
+
+.dropdown {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    background-color: #ECE9E0;
+    border-radius: 20px;
+}
+
+.dropdown div {
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.dropdown div:hover {
+    background-color: #5D5F60;
+}
+
+.dropdown-container:hover .dropdown {
+    display:block;
+}
+
+  
+
+
+/*
+########################
+        Main
+########################
+*/
+
+main {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1800px;
+    min-width: 800px;
+    width: 100%;
+    min-height: calc(100vh - 60px - 32px);
+}
+
+aside {
+    border-radius: 10px;
+    overflow: auto;
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+    width: 300px;
+    background-color: #5D5F60;
+    height: calc(100vh - 60px - 50px);
+}
+
+aside table {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 12px;
+    min-width: 260px;
+}
+
+aside table td, aside table th{
+    padding: 5px;
+    border-bottom: 1px solid #C4DBE0;
+    overflow: auto;
+}
+
+#register-window {
+    display: none;
+}
+
+#login-swap {
+    display: none;
+}
+
+#post-frame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 310px);
+    border-radius: 10px;
+    background-color: #8A9EA1;
+    height: calc(100vh - 60px - 50px);
+}
+
+#post-show {
+    display: none;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+
+#post-form {
+    margin: 20px;
+    padding: 20px;
+    background-color: #213130;
+    border-radius: 20px;
+    max-width: calc(100vw);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-self: center;
+    flex-direction: row-reverse;
+}
+
+#post-content {
+    width: calc(100vw);
+    margin-right: 40px;
+}
+
+#post-form-right {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#post-form-right button {
+    width: 100px;
+}
+
+select {
+    background-color: #ECE9E0;
+    text-align: center;
+    border-radius: 20px;
+    width: 100px;
+    
+}
+
+#select-sort, #select-show {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#select-view {
+    height: 40px;
+}
+
+#post-top {
+    margin-top: 40px;
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+}
+
+#posts-board {
+    overflow: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.postStyle {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px;
+    background-color: #213130;
+    border-radius: 20px;
+}
+
+.postContent {
+    width: 70%;
+    text-align: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/*
+########################
+        Footer
+########################
+*/
+
+
+footer {
+    flex-shrink: 0;
+    width:100%;
+    height: 100px;
+    background-color: #ECE9E0;
+}
+
+footer p {
+    color: #213130;
+    text-align: center;
+    padding-top: 10px;
+}
